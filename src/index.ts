@@ -1,7 +1,7 @@
-import { colorizeText } from './colorize-text'
-import { ILogItPretty } from './i-log-it-pretty'
-import { mapStatusToDetailEmoji } from './map-status-to-detail-emoji'
-import { mapStatusToEmoji } from './map-status-to-emoji'
+import { colorizeText } from './colorize-text.js'
+import { ILogItPretty } from './i-log-it-pretty.js'
+import { mapStatusToDetailEmoji } from './map-status-to-detail-emoji.js'
+import { mapStatusToEmoji } from './map-status-to-emoji.js'
 
 export const logItPretty = ({
   statusCode,
