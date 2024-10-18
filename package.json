@@ -7,7 +7,7 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "vitest",
     "lint": "eslint .",
     "prettier": "prettier . --write",
     "prettier:check": "prettier . --check"
@@ -26,6 +26,7 @@
     "eslint": "^9.12.0",
     "globals": "^15.11.0",
     "prettier": "latest",
-    "typescript-eslint": "^8.10.0"
+    "typescript-eslint": "^8.10.0",
+    "vitest": "^2.1.3"
   }
 }

@@ -9,5 +9,8 @@ const colorCodes: { [key in ColorType]: string } = {
 }
 
 export const getColorCode = (type: ColorType): string => {
+  if (!(type in colorCodes)) {
+    return colorCodes.reset
+  }
   return colorCodes[type]
 }
