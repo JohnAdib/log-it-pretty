@@ -1,8 +1,8 @@
 import { ILogItPretty } from './i-log-it-pretty.js'
-import { calculateDuration } from './utils/calculate-duration.js'
-import { colorizeText } from './utils/color/colorize-text.js'
-import { mapStatusToDetailEmoji } from './utils/map-status/map-status-to-detail-emoji.js'
-import { mapStatusToEmoji } from './utils/map-status/map-status-to-emoji.js'
+import { formatDuration } from './utils/format/format-duration.js'
+import { formatMethod } from './utils/format/format-method.js'
+import { formatUrl } from './utils/format/format-url.js'
+import { formatStatusCode } from './utils/format/fortmat-status-code.js'
 
 export const logItPretty = ({
   statusCode,
@@ -11,34 +11,12 @@ export const logItPretty = ({
   startTime,
   url
 }: ILogItPretty = {}): string => {
-  let logMsg = ''
+  const logParts = [
+    formatStatusCode(statusCode),
+    formatMethod(method),
+    formatDuration(duration, startTime),
+    formatUrl(url)
+  ]
 
-  if (!duration && startTime) {
-    duration = calculateDuration({ startTime })
-  }
-
-  if (statusCode !== undefined) {
-    const statusEmoji = mapStatusToEmoji(statusCode)
-    const statusCodeFormatted = colorizeText(statusCode.toString(), 'blue')
-    const statusDetailEmoji = mapStatusToDetailEmoji(statusCode)
-    logMsg += `${statusEmoji} ${statusCodeFormatted} ${statusDetailEmoji} `
-  }
-
-  if (method !== undefined) {
-    const reqMethod = colorizeText(method, 'bright')
-    logMsg += `${reqMethod} `
-  }
-
-  if (duration !== undefined) {
-    const reqDuration = (duration / 1000).toFixed(3) + 's'
-    const responseTime = colorizeText(reqDuration, 'dim')
-    logMsg += `${responseTime} `
-  }
-
-  if (url !== undefined) {
-    const reqUrl = colorizeText(url, 'cyan')
-    logMsg += `${reqUrl}`
-  }
-
-  return logMsg.trim()
+  return logParts.filter(Boolean).join(' ')
 }
