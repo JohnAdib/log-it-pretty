@@ -2,10 +2,7 @@ import type { Request, Response } from 'express'
 import { mapStatusToDetailEmoji } from './map-status-to-detail-emoji.js'
 import { mapStatusToEmoji } from './map-status-to-emoji.js'
 
-export const logRequests = (
-  req: Request,
-  res: Response,
-): void => {
+export const logRequests = (req: Request, res: Response): void => {
   {
     const reqStartAt = process.hrtime()
 

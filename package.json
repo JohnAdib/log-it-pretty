@@ -1,23 +1,27 @@
 {
-    "name": "log-it-pretty",
-    "version": "1.0.0",
-    "description": "Customizable utility for transforming data into a formatted log string for request logging",
-    "main": "dist/index.js",
-    "types": "dist/index.d.ts",
-    "type": "module",
-    "scripts": {
-      "build": "tsc",
-      "test": "echo \"Error: no test specified\" && exit 1",
-      "prettier": "prettier . --write",
-      "prettier:check": "prettier . --check"
-    },
-    "keywords": ["log", "request", "express", "emoji", "ESM"],
-    "author": "MrAdib",
-    "license": "MIT",
-    "dependencies": {
-      
-    },
-    "devDependencies": {
-        "prettier": "latest"
-    }
+  "name": "log-it-pretty",
+  "version": "1.0.0",
+  "description": "Customizable utility for transforming data into a formatted log string for request logging",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prettier": "prettier . --write",
+    "prettier:check": "prettier . --check"
+  },
+  "keywords": [
+    "log",
+    "request",
+    "express",
+    "emoji",
+    "ESM"
+  ],
+  "author": "MrAdib",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "prettier": "latest"
   }
+}

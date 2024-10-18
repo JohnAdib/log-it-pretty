@@ -1,18 +1,18 @@
 {
-    "compilerOptions": {
-      "module": "ESNext",
-      "target": "ES6",
-      "outDir": "./dist",
-      "declaration": true,
-      "strict": true,
-      "strictNullChecks": true,
-      "noEmitOnError": true,
-      "noImplicitAny": true,
-      "noUnusedParameters": true,
-      "noImplicitReturns": true,
-      "noUnusedLocals": true,
-      "forceConsistentCasingInFileNames": true,
-    },
-    "include": ["src/**/*.ts"],
-    "exclude": ["node_modules"]
-  }
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "ES6",
+    "outDir": "./dist",
+    "declaration": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "noEmitOnError": true,
+    "noImplicitAny": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules"]
+}
