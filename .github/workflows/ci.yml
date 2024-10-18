@@ -1,0 +1,44 @@
+name: 👔 CI
+
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+  # Trigger the workflow on push to the main
+  push:
+
+  # Trigger the workflow on pull request
+  pull_request:
+
+jobs:
+  ci-pipeline:
+    name: 👌 Node ${{ matrix.node }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [18, 20, 22]
+
+    steps:
+      - name: 🎠 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🎺 Prepare - Set up Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: 'npm'
+
+      - name: 💻 Install Node.js dependencies
+        run: npm ci
+
+      - name: 📐 Prettier - Code Formatter
+        run: npm run prettier:check
+
+      - name: 📐 ESLint - Code Linting
+        run: npm run lint
+
+      - name: 🏗️ Build - Compile Code
+        run: npm run build
+
+      - name: 🧪 Tests - Run Unit Tests
+        run: npm run test
