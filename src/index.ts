@@ -1,22 +1,19 @@
 import { ILogItPretty } from './i-log-it-pretty.js'
-import { formatDuration } from './utils/format/format-duration.js'
-import { formatMethod } from './utils/format/format-method.js'
-import { formatUrl } from './utils/format/format-url.js'
-import { formatStatusCode } from './utils/format/fortmat-status-code.js'
+import { PrettyLogger } from './log-it-pretty.js'
 
-export const logItPretty = ({
-  statusCode,
-  method,
-  duration,
-  startTime,
-  url
-}: ILogItPretty = {}): string => {
-  const logParts = [
-    formatStatusCode(statusCode),
-    formatMethod(method),
-    formatDuration(duration, startTime),
-    formatUrl(url)
-  ]
+export const logItPretty = (
+  logOptions: ILogItPretty
+): string | PrettyLogger => {
+  const prettyLogger = new PrettyLogger(logOptions)
 
-  return logParts.filter(Boolean).join(' ')
+  // Define a variable to check if logOptions is an empty object, meaning no options provided
+  const hasNoLogOptions = Object.keys(logOptions).length === 0
+
+  // If logOptions is missing (null/undefined) or is an empty object, return the formatted string directly
+  if (!logOptions || hasNoLogOptions) {
+    return prettyLogger.getLogMessage()
+  }
+
+  // Otherwise, return the PrettyLogger instance for chaining (to use logToConsole)
+  return prettyLogger
 }
