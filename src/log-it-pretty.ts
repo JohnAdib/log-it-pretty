@@ -6,6 +6,7 @@ import { formatStatusCode } from './utils/format/fortmat-status-code.js'
 
 export class PrettyLogger {
   private logParts: string[] = []
+  private isChained = false
 
   constructor(logOptions: ILogItPretty) {
     const { statusCode, method, duration, startTime, url } = logOptions
@@ -18,11 +19,20 @@ export class PrettyLogger {
     ]
   }
 
+  public get isChainingUsed(): boolean {
+    return this.isChained
+  }
+
+  logToConsole(): void {
+    this.isChained = true
+    console.log(this.getLogMessage())
+  }
+
   getLogMessage(): string {
     return this.logParts.filter(Boolean).join(' ').trim()
   }
 
-  logToConsole(): void {
-    console.log(this.getLogMessage())
+  toString(): string {
+    return this.getLogMessage()
   }
 }
