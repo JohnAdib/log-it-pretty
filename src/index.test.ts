@@ -7,7 +7,8 @@ test('logItPretty returns formatted message with all values', () => {
     method: 'GET',
     duration: 500,
     url: '/api/v1/users'
-  })
+  }).log()
+  console.log('result is ', result)
   expect(result).toContain('✅')
   expect(result).toContain('200')
   expect(result).toContain('GET')
@@ -18,7 +19,7 @@ test('logItPretty returns formatted message with all values', () => {
 test('logItPretty excludes undefined values from the final message', () => {
   const result = logItPretty({
     method: 'POST'
-  })
+  }).log()
   expect(result).toContain('POST')
   expect(result).not.toContain('200')
   expect(result).not.toContain('0.500s')
